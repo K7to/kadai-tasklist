@@ -16,7 +16,11 @@
             </tr>
             <c:forEach var = "task" items = "${tasks}">
                 <tr>
-                    <th><c:out value = "${task.id}"></c:out></th>
+                    <th>
+                        <a href="${pageContext.request.contextPath}/show?id=${message.id}">
+                            <c:out value="${task.id}"></c:out>
+                        </a>
+                    </th>
                     <th><c:out value = "${task.taskName}"></c:out></th>
                     <th><c:out value = "${task.taskDetail}"></c:out></th>
                     <th><c:out value = "${task.addedDay}"></c:out></th>
