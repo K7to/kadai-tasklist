@@ -17,7 +17,7 @@
             <c:forEach var = "task" items = "${tasks}">
                 <tr>
                     <th>
-                        <a href="${pageContext.request.contextPath}/show?id=${message.id}">
+                        <a href="${pageContext.request.contextPath}/show?id=${task.id}">
                             <c:out value="${task.id}"></c:out>
                         </a>
                     </th>
