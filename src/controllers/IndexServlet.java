@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.taskList;
+import models.Task;
 import utils.DBUtil;
 
 /**
@@ -38,7 +38,7 @@ public class IndexServlet extends HttpServlet {
         //response.getWriter().append("Served at: ").append(request.getContextPath());
         EntityManager em = DBUtil.createEntityManager();
 
-        List<taskList> tasks = em.createNamedQuery("getAllTaskLists", taskList.class).getResultList();
+        List<Task> tasks = em.createNamedQuery("getAllTaskLists", Task.class).getResultList();
 
         em.close();
 
@@ -49,12 +49,5 @@ public class IndexServlet extends HttpServlet {
         rd.forward(request, response);
     }
 
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        doGet(request, response);
-    }
 
 }

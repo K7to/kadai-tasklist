@@ -6,7 +6,7 @@
         <h2>タスク一覧</h2>
     </c:param>
     <c:param name = "content">
-        <table>
+        <table border = "1">
             <tr>
                 <th>id</th>
                 <th>タスク名</th>
@@ -24,7 +24,7 @@
                     <th><c:out value = "${task.taskName}"></c:out></th>
                     <th><c:out value = "${task.taskDetail}"></c:out></th>
                     <th><c:out value = "${task.addedDay}"></c:out></th>
-                    <th><c:out value = "${task.deadLine}"></c:out></th>
+                    <th><c:out value = "${task.update}"></c:out></th>
                 </tr>
             </c:forEach>
         </table>

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.taskList;
+import models.Task;
 import utils.DBUtil;
 
 /**
@@ -35,7 +35,7 @@ public class EditServlet extends HttpServlet {
         // TODO Auto-generated method stub
         EntityManager em = DBUtil.createEntityManager();
 
-        taskList tl = em.find(taskList.class, Integer.parseInt(request.getParameter("id")));
+        Task tl = em.find(Task.class, Integer.parseInt(request.getParameter("id")));
 
         em.close();
 

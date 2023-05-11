@@ -2,9 +2,6 @@ package controllers;
 
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.persistence.EntityManager;
 import javax.servlet.ServletException;
@@ -13,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.taskList;
+import models.Task;
 import utils.DBUtil;
 
 /**
@@ -45,7 +42,7 @@ public class CreateServlet extends HttpServlet {
             em.getTransaction().begin();
 
             //空のデータを作る
-            taskList tl = new taskList();
+            Task tl = new Task();
             String taskName = request.getParameter("name");
             tl.setTaskName(taskName);
 
@@ -55,19 +52,8 @@ public class CreateServlet extends HttpServlet {
             long time = System.currentTimeMillis();
             Timestamp tm = new Timestamp(time);
             tl.setAddedDay(tm);
+            tl.setUpdate(tm);
 
-            String deadLineY = request.getParameter("deadLineY");
-            String deadLineM = request.getParameter("deadLineM");
-            String deadLineD = request.getParameter("deadLineD");
-            String date = deadLineY + "/" + deadLineM + "/" + deadLineD;
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-            try {
-                Date d = sdf.parse(date);
-                tl.setDeadLine(new Timestamp(d.getTime()));
-            }
-            catch (ParseException e) {
-                //とりあえず現在時間を入れとく
-            }
 
             //データベース書き込み
             em.persist(tl);

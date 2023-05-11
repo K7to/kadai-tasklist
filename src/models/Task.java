@@ -16,11 +16,11 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(
             name = "getAllTaskLists",
-            query = "SELECT m FROM taskList AS m ORDER BY m.id"
+            query = "SELECT m FROM Task AS m ORDER BY m.id"
             )
 })
-@Table(name = "taskLists")
-public class taskList {
+@Table(name = "tasks")
+public class Task {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,9 +38,9 @@ public class taskList {
     @Column(name = "addedDay")
     private Timestamp addedDay;
 
-    //タスク締め切り
-    @Column(name = "deadLine")
-    private Timestamp deadLine;
+    //タスク更新日時 ※カラム名としてupdateという名前は使ってはいけない。バグる
+    @Column(name = "Update_At")
+    private Timestamp update;
 
     public Integer getId() {
         return id;
@@ -74,11 +74,11 @@ public class taskList {
         addedDay = add;
     }
 
-    public Timestamp getDeadLine() {
-        return deadLine;
+    public Timestamp getUpdate() {
+        return update;
     }
 
-    public void setDeadLine(Timestamp date) {
-        deadLine = date;
+    public void setUpdate(Timestamp date) {
+        update = date;
     }
 }

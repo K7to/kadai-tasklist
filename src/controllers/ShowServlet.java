@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.taskList;
+import models.Task;
 import utils.DBUtil;
 
 /**
@@ -36,7 +36,7 @@ public class ShowServlet extends HttpServlet {
         EntityManager em = DBUtil.createEntityManager();
 
         // 該当のIDのメッセージ1件のみをデータベースから取得
-        taskList tl = em.find(taskList.class, Integer.parseInt(request.getParameter("id")));
+        Task tl = em.find(Task.class, Integer.parseInt(request.getParameter("id")));
 
         em.close();
 
