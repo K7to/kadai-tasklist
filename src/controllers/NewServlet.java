@@ -1,9 +1,7 @@
 package controllers;
 
 import java.io.IOException;
-import java.util.List;
 
-import javax.persistence.EntityManager;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,20 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.taskList;
-import utils.DBUtil;
 
 /**
- * Servlet implementation class IndexServlet
+ * Servlet implementation class NewServlet
  */
-//一覧表示サーブレット
-@WebServlet("/index")
-public class IndexServlet extends HttpServlet {
+@WebServlet("/new")
+public class NewServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IndexServlet() {
+    public NewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,17 +31,12 @@ public class IndexServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
-        //response.getWriter().append("Served at: ").append(request.getContextPath());
-        EntityManager em = DBUtil.createEntityManager();
+        //CSRF対策
+        request.setAttribute("_token", request.getSession().getId());
 
-        List<taskList> tasks = em.createNamedQuery("getAllTaskLists", taskList.class).getResultList();
+        request.setAttribute("task", new taskList());
 
-        em.close();
-
-        request.setAttribute("tasks", tasks);
-        //response.getWriter().append(Integer.valueOf(tasks.size()).toString());
-
-        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/index.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/new.jsp");
         rd.forward(request, response);
     }
 
