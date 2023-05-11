@@ -9,6 +9,18 @@
         <form method = "POST" action = "${pageContext.request.contextPath}/update">
             <c:import url = "../template/form.jsp"/>
         </form>
+
+        <p><a href="#" onclick="confirmDestroy();">このメッセージを削除する</a></p>
+        <form method="POST" action="${pageContext.request.contextPath}/destroy">
+            <input type="hidden" name="_token" value="${_token}" />
+        </form>
+        <script>
+        function confirmDestroy() {
+            if(confirm("本当に削除してよろしいですか？")) {
+                document.forms[1].submit();
+            }
+        }
+        </script>
     </c:param>
 
 </c:import>
