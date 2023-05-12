@@ -10,7 +10,6 @@
             <tr>
                 <th>id</th>
                 <th>タスク名</th>
-                <th>詳細</th>
                 <th>追加日</th>
                 <th>締め切り</th>
             </tr>
@@ -22,7 +21,6 @@
                         </a>
                     </th>
                     <th><c:out value = "${task.taskName}"></c:out></th>
-                    <th><c:out value = "${task.taskDetail}"></c:out></th>
                     <th><c:out value = "${task.addedDay}"></c:out></th>
                     <th><c:out value = "${task.update}"></c:out></th>
                 </tr>

@@ -43,9 +43,6 @@ public class UpdateServlet extends HttpServlet {
             String taskName = request.getParameter("name");
             tl.setTaskName(taskName);
 
-            String taskDetail = request.getParameter("detail");
-            tl.setTaskDetail(taskDetail);
-
             long time = System.currentTimeMillis();
             Timestamp tm = new Timestamp(time);
             tl.setUpdate(tm);

@@ -30,10 +30,6 @@ public class Task {
     @Column(name = "taskName", length = 255, nullable = false)
     private String taskName;
 
-    //タスク詳細
-    @Column(name = "taskDetail", length = 255, nullable = false)
-    private String taskDetail;
-
     //タスク追加日
     @Column(name = "addedDay")
     private Timestamp addedDay;
@@ -56,14 +52,6 @@ public class Task {
 
     public void setTaskName(String taskName) {
         this.taskName = taskName;
-    }
-
-    public String  getTaskDetail() {
-        return taskDetail;
-    }
-
-    public void setTaskDetail(String detail) {
-        taskDetail = detail;
     }
 
     public Timestamp getAddedDay() {

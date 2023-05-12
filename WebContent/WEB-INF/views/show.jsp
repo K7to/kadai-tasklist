@@ -8,7 +8,6 @@
     </c:param>
     <c:param name="content">
         <p>タイトル：<c:out value="${task.taskName}" /></p>
-        <p>タスク内容：<c:out value="${task.taskDetail}" /></p>
         <p>作成日時：<fmt:formatDate value="${task.addedDay}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
         <p>更新日時：<fmt:formatDate value="${task.update}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
 
